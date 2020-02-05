@@ -79,7 +79,7 @@ target_link_libraries(common
 if (ELUNA)
   target_link_libraries(common
     PUBLIC
-      lualib)
+      lualib luacompat)
 endif()
 
 add_dependencies(common revision_data.h)

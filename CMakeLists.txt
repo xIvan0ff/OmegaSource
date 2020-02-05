@@ -80,6 +80,12 @@ include(cmake/genrev.cmake)
 # print out the results before continuing
 include(cmake/showoptions.cmake)
 
+# set default "install dir" to what default "bin dir" would be
+# this will make it easier for people accustomed to bin dir on windows
+if (WIN32 AND CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  set (CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/bin/$<CONFIG>" CACHE PATH "default install path" FORCE)
+endif()
+
 # add dependencies
 add_subdirectory(dep)
 
