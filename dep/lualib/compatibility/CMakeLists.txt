@@ -18,12 +18,13 @@ target_link_libraries(compat53_utf8 luacompat)
 target_include_directories(compat53_utf8 PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/lua-compat-5.3")
 
 if (APPLE OR UNIX)
-  set_target_properties(compat53_string compat53_table compat53_utf8 PROPERTIES COMPILE_FLAGS "-fPIC")
+  install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lua-compat-5.3/compat53" DESTINATION "${CMAKE_INSTALL_PREFIX}/bin/lua_libs")
+  install(TARGETS compat53_string compat53_table compat53_utf8 DESTINATION "${CMAKE_INSTALL_PREFIX}/bin/lua_libs")
 endif()
-install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lua-compat-5.3/compat53" DESTINATION "${CMAKE_INSTALL_PREFIX}/lua_libs")
-install(TARGETS compat53_string compat53_table compat53_utf8 DESTINATION "${CMAKE_INSTALL_PREFIX}/lua_libs/compat53")
 if (WIN32)
   set_property(TARGET compat53_string compat53_table compat53_utf8 PROPERTY WINDOWS_EXPORT_ALL_SYMBOLS YES)
+  install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lua-compat-5.3/compat53" DESTINATION "${CMAKE_INSTALL_PREFIX}/lua_libs")
+  install(TARGETS compat53_string compat53_table compat53_utf8 DESTINATION "${CMAKE_INSTALL_PREFIX}/lua_libs/compat53")
   install(
     FILES $<TARGET_PDB_FILE:compat53_string> $<TARGET_PDB_FILE:compat53_table> $<TARGET_PDB_FILE:compat53_utf8>
     DESTINATION "${CMAKE_INSTALL_PREFIX}/lua_libs/compat53"

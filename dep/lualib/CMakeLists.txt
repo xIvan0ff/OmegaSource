@@ -4,16 +4,12 @@
 unset(CMAKE_RUNTIME_OUTPUT_DIRECTORY)
 
 set(LUA_VERSION "luajit" CACHE STRING "Lua version to use")
-set_property(CACHE LUA_VERSION PROPERTY STRINGS lua51 lua52 luajit)
+set_property(CACHE LUA_VERSION PROPERTY STRINGS lua51 lua52 lua53 luajit)
 MESSAGE(STATUS "Lua version: ${LUA_VERSION}")
 
 
 # option(LUA_STATIC "link lua statically" ON)
-if (WIN32)
-  set(LUA_STATIC OFF)
-else()
-  set(LUA_STATIC ON)
-endif()
+set(LUA_STATIC OFF)
 if (LUA_STATIC)
   MESSAGE(STATUS "Lua linking: static")
 else()

@@ -72,7 +72,11 @@ if (UNIX OR APPLE)
     add_custom_target(luajit_target DEPENDS ${LUAJIT_LIB_PATH})
 
     # create an library target out of the library compilation result
-    add_library(lualib SHARED IMPORTED GLOBAL)
+    if (LUA_STATIC)
+        add_library(lualib STATIC IMPORTED GLOBAL)
+    else()
+        add_library(lualib SHARED IMPORTED GLOBAL)
+    endif()
     add_dependencies(lualib luajit_target)
 
     # specify where the library is and where to find the headers
@@ -90,3 +94,4 @@ endif()
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DLUA_VERSION_NUM=501")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DLUA_VERSION_NUM=501")
+
