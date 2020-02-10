@@ -1,3 +1,8 @@
+# disable "bin dir"
+# we cannot use a single folder for output since some files have same name and they overwrite each other
+# please use install instead
+unset(CMAKE_RUNTIME_OUTPUT_DIRECTORY)
+
 set(LUA_VERSION "luajit" CACHE STRING "Lua version to use")
 set_property(CACHE LUA_VERSION PROPERTY STRINGS lua51 lua52 luajit)
 MESSAGE(STATUS "Lua version: ${LUA_VERSION}")
