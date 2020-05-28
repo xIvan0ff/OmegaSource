@@ -109,6 +109,23 @@ public:
         std::string namePart = args;
         std::wstring wNamePart;
 
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
+
         if (!Utf8toWStr(namePart, wNamePart))
             return false;
 
@@ -183,6 +200,15 @@ public:
 
         std::string namePart = args;
         std::wstring wNamePart;
+
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
 
         // converting string that we try to find to lower case
         if (!Utf8toWStr(namePart, wNamePart))
@@ -262,6 +288,15 @@ public:
         std::string namePart = args;
         std::wstring wNamePart;
 
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
+
         // converting string that we try to find to lower case
         if (!Utf8toWStr(namePart, wNamePart))
             return false;
@@ -319,6 +354,15 @@ public:
 
         std::string namePart = args;
         std::wstring wNamePart;
+
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
 
         if (!Utf8toWStr(namePart, wNamePart))
             return false;
@@ -418,6 +462,15 @@ public:
 
         std::string namePart = args;
         std::wstring wNamePart;
+
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
 
         // converting string that we try to find to lower case
         if (!Utf8toWStr(namePart, wNamePart))
@@ -525,6 +578,15 @@ public:
         std::string namePart = args;
         std::wstring wNamePart;
 
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
+
         if (!Utf8toWStr(namePart, wNamePart))
             return false;
 
@@ -595,6 +657,15 @@ public:
 
         std::string namePart = args;
         std::wstring wNamePart;
+
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
 
         // converting string that we try to find to lower case
         if (!Utf8toWStr(namePart, wNamePart))
@@ -674,6 +745,15 @@ public:
 
         std::string namePart = args;
         std::wstring wNamePart;
+
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
 
         // converting string that we try to find to lower case
         if (!Utf8toWStr(namePart, wNamePart))
@@ -845,6 +925,15 @@ public:
         std::string namePart = args;
         std::wstring wNamePart;
 
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
+
         if (!Utf8toWStr(namePart, wNamePart))
             return false;
 
@@ -932,6 +1021,15 @@ public:
 
         std::string namePart = args;
         std::wstring wNamePart;
+
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
 
         if (!Utf8toWStr(namePart, wNamePart))
             return false;
@@ -1112,6 +1210,15 @@ public:
         std::string namePart = args;
         std::wstring wNamePart;
 
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
+
         if (!Utf8toWStr(namePart, wNamePart))
             return false;
 
@@ -1194,6 +1301,15 @@ public:
         std::string namePart = str;
         std::wstring wNamePart;
 
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
+
         if (!Utf8toWStr(namePart, wNamePart))
             return false;
 
@@ -1249,6 +1365,15 @@ public:
 
         std::string namePart = args;
         std::wstring wNamePart;
+
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
 
         if (!Utf8toWStr(namePart, wNamePart))
             return false;
@@ -1328,6 +1453,15 @@ public:
 
         std::string namePart = args;
         std::wstring wNamePart;
+
+        //  if item is linked item (shift-click) then extract [name] without []!
+        if (args[0] == '|')
+        {
+            char* extract = strstr((char*)args, "[");
+            char* extracted = strtok(extract + 1, "]");
+
+            namePart = extracted;
+        }
 
         if (!Utf8toWStr(namePart, wNamePart))
             return false;
