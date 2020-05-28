@@ -68,6 +68,47 @@ HyperlinkInfo Trinity::Hyperlinks::ParseHyperlink(char const* pos)
     size_t textLength = 0;
     while (*pos)
     {
+        if (*pos == '[' && sWorld->getBoolConfig(CONFIG_UI_QUESTLEVELS_IN_DIALOGS) && sWorld->getIntConfig(CONFIG_CHAT_STRICT_LINK_CHECKING_CUSTOM_LINKS) > 0)
+        {
+            for (uint8 i = 0; i < 3; i++)
+            {
+                ++pos;
+                ++textLength;
+
+                if (*pos == ']')
+                    break;
+
+                if ((*pos < '0' || *pos > '9'))
+                    break;
+            }
+
+            if (*pos != ']')
+            {
+                // Allow custom colored text if specified in configs
+                if (sWorld->getIntConfig(CONFIG_CHAT_STRICT_LINK_CHECKING_CUSTOM_LINKS) > 0)
+                {
+                    ++pos;
+                    ++textLength;
+    
+                    if (*(pos++) != 'c')
+                        return nullptr;
+                    ++textLength;
+    
+                    for (uint8 i = 0; i < 8; ++i)
+                    {
+                        uint8 hex = toHex(*(pos++));
+                        if (!hex)
+                            return nullptr;
+                        ++textLength;
+                    }
+                }
+                else
+                    return nullptr;            
+            }
+
+            ++pos;
+            ++textLength;
+        }
         if (*pos == '|')
             return nullptr;
         if (*(pos++) == ']')
