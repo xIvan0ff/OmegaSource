@@ -152,8 +152,8 @@ uint32 LootStore::LoadLootTable()
         bool   needsquest          = fields[4].GetBool();
         uint16 lootmode            = fields[5].GetUInt16();
         uint8  groupid             = fields[6].GetUInt8();
-        uint8  mincount            = fields[7].GetUInt8();
-        uint8  maxcount            = fields[8].GetUInt8();
+        uint32 mincount            = fields[7].GetUInt32();
+        uint32 maxcount            = fields[8].GetUInt32();
 
         if (groupid >= 1 << 7)                                     // it stored in 7 bit field
         {
