@@ -97,10 +97,12 @@ HyperlinkInfo Trinity::Hyperlinks::ParseHyperlink(char const* pos)
                 ++pos;
                 ++textLength;
 
-                if (*(pos++) != 'c' && *(pos++) != 'r')
+                auto posChar = pos++;
+
+                if (*posChar != 'c' && *posChar != 'r')
                     return nullptr;
                 ++textLength;
-                if (*(pos++) == 'c')
+                if (*posChar == 'c')
                 {
                     for (uint8 i = 0; i < 8; ++i)
                     {
