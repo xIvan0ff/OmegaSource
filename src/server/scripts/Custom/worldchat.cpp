@@ -20,7 +20,7 @@ std::string GetNameLink(Player* player)
 {
         std::string name = player->GetName();
         std::string color;
-        switch(player->getClass())
+        switch(player->GetClass())
         {
         case CLASS_DEATH_KNIGHT:
                 color = "|cffC41F3B";

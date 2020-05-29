@@ -17,7 +17,7 @@
 
 // This is where scripts' loading functions should be declared:
 void AddSC_Transmogrification();
-
+void AddSC_cs_world_chat();
 
 // The name of this function should match:
 // void Add${NameOfDirectory}Scripts()+
@@ -105,4 +105,5 @@ void AddCustomScripts()
     // 39
     // 40
     AddSC_Transmogrification();
+    AddSC_cs_world_chat();
 }
