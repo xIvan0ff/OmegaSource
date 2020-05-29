@@ -83,34 +83,36 @@ HyperlinkInfo Trinity::Hyperlinks::ParseHyperlink(char const* pos)
             }
 
             if (*pos != ']')
-            {
-                // Allow custom colored text if specified in configs
-                if (sWorld->getIntConfig(CONFIG_CHAT_STRICT_LINK_CHECKING_CUSTOM_LINKS) > 0)
-                {
-                    ++pos;
-                    ++textLength;
-    
-                    if (*(pos++) != 'c')
-                        return nullptr;
-                    ++textLength;
-    
-                    for (uint8 i = 0; i < 8; ++i)
-                    {
-                        uint8 hex = toHex(*(pos++));
-                        if (!hex)
-                            return nullptr;
-                        ++textLength;
-                    }
-                }
-                else
-                    return nullptr;            
-            }
+                return nullptr;
 
             ++pos;
             ++textLength;
         }
+
         if (*pos == '|')
-            return nullptr;
+        {
+            // Allow custom colored text if specified in configs
+            if (sWorld->getIntConfig(CONFIG_CHAT_STRICT_LINK_CHECKING_CUSTOM_LINKS) > 0)
+            {
+                ++pos;
+                ++textLength;
+
+                if (*(pos++) != 'c')
+                    return nullptr;
+                ++textLength;
+
+                for (uint8 i = 0; i < 8; ++i)
+                {
+                    uint8 hex = toHex(*(pos++));
+                    if (!hex)
+                        return nullptr;
+                    ++textLength;
+                }
+            }
+            else
+                return nullptr;            
+        }
+
         if (*(pos++) == ']')
             break;
         ++textLength;
