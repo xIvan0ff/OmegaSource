@@ -22,36 +22,36 @@ std::string GetNameLink(Player* player)
         std::string color;
         switch(player->GetClass())
         {
-        case CLASS_DEATH_KNIGHT:
-                color = "|cffC41F3B";
-                break;
-        case CLASS_DRUID:
-                color = "|cffFF7D0A";
-                break;
-        case CLASS_HUNTER:
-                color = "|cffABD473";
-                break;
-        case CLASS_MAGE:
-                color = "|cff69CCF0";
-                break;
-        case CLASS_PALADIN:
-                color = "|cffF58CBA";
-                break;
-        case CLASS_PRIEST:
-                color = "|cffFFFFFF";
-                break;
-        case CLASS_ROGUE:
-                color = "|cffFFF569";
-                break;
-        case CLASS_SHAMAN:
-                color = "|cff0070DE";
-                break;
-        case CLASS_WARLOCK:
-                color = "|cff9482C9";
-                break;
-        case CLASS_WARRIOR:
-                color = "|cffC79C6E";
-                break;
+            case CLASS_DEATH_KNIGHT:
+                    color = "|cffC41F3B";
+                    break;
+            case CLASS_DRUID:
+                    color = "|cffFF7D0A";
+                    break;
+            case CLASS_HUNTER:
+                    color = "|cffABD473";
+                    break;
+            case CLASS_MAGE:
+                    color = "|cff69CCF0";
+                    break;
+            case CLASS_PALADIN:
+                    color = "|cffF58CBA";
+                    break;
+            case CLASS_PRIEST:
+                    color = "|cffFFFFFF";
+                    break;
+            case CLASS_ROGUE:
+                    color = "|cffFFF569";
+                    break;
+            case CLASS_SHAMAN:
+                    color = "|cff0070DE";
+                    break;
+            case CLASS_WARLOCK:
+                    color = "|cff9482C9";
+                    break;
+            case CLASS_WARRIOR:
+                    color = "|cffC79C6E";
+                    break;
         }
         return "|Hplayer:"+name+"|h|cffFFFFFF["+color+name+"|cffFFFFFF]|h|r";
 }
@@ -114,50 +114,58 @@ public:
         switch (player->GetSession()->GetSecurity())
         {
             // Player
-        case SEC_PLAYER:
-            if (player->GetTeam() == ALLIANCE)
-            {
-                msg += "|TInterface\\icons\\INV_Bijou_Blue:15|t|cFFFFD700[World]|cff0000ff[Alliance] ";
-                msg += GetNameLink(player);
-                msg += " |cfffaeb00";
-            }
+            case SEC_PLAYER:
+                if (player->GetTeam() == ALLIANCE)
+                {
+                    msg += "|TInterface\\icons\\INV_Bijou_Blue:15|t|cFFFFD700[World]|cff0000ff[Alliance] ";
+                    msg += GetNameLink(player);
+                    msg += " |cfffaeb00";
+                }
 
-            else
-            {
-                msg += "|TInterface\\icons\\INV_Bijou_Red:15|t|cFFFFD700[World]|cffff0000[Horde] ";
-                msg += GetNameLink(player);
-                msg += " |cfffaeb00";
-            }
-            break;
+                else
+                {
+                    msg += "|TInterface\\icons\\INV_Bijou_Red:15|t|cFFFFD700[World]|cffff0000[Horde] ";
+                    msg += GetNameLink(player);
+                    msg += " |cfffaeb00";
+                }
+                break;
+
             // V.I.P
-        case SEC_MODERATOR:
-            if (player->GetTeam() == ALLIANCE)
-            {
-                msg += "|TInterface\\icons\\Achievement_PVP_A_A:15|t|cffB70093|Alliance]|cffFFFFFF[V|cff28FF28.I|cffFF2424.P] ";
-                msg += GetNameLink(player);
-                msg += " |cff0000FF";
-            }
+            case SEC_MODERATOR:
+                if (player->GetTeam() == ALLIANCE)
+                {
+                    msg += "|TInterface\\icons\\Achievement_PVP_A_A:15|t|cffB70093|Alliance]|cffFFFFFF[V|cff28FF28.I|cffFF2424.P] ";
+                    msg += GetNameLink(player);
+                    msg += " |cff0000FF";
+                }
 
-            else
-            {
-                msg += "|TInterface\\icons\\Achievement_PVP_H_H:15|t|cffB70093|Horde]|cffFFFFFF[V|cff28FF28.I|cffFF2424.P] ";
-                msg += GetNameLink(player);
-                msg += " |cffFF0000";
-            }
-            break;
+                else
+                {
+                    msg += "|TInterface\\icons\\Achievement_PVP_H_H:15|t|cffB70093|Horde]|cffFFFFFF[V|cff28FF28.I|cffFF2424.P] ";
+                    msg += GetNameLink(player);
+                    msg += " |cffFF0000";
+                }
+                break;
+
             // GM
-        case SEC_GAMEMASTER:
-            msg += "|TInterface\\icons\\Mail_GMIcon:15|t|cff000000[Staff]|cffABD473[GameMaster] ";
-            msg += GetNameLink(player);
-            msg += " |cff51FF59";
-            break;
-            // Admin
-        case SEC_ADMINISTRATOR:
-            msg += "|TInterface\\icons\\Mail_GMIcon:15|t|cff000000[Staff]|cff9B9B9B[Administrator] ";
-            msg += GetNameLink(player);
-            msg += " |cff1AFF25";
-            break;
+            case SEC_GAMEMASTER:
+                msg += "|TInterface\\icons\\Mail_GMIcon:15|t|cff000000[Staff]|cffABD473[GameMaster] ";
+                msg += GetNameLink(player);
+                msg += " |cff51FF59";
+                break;
 
+            // Admin
+            case SEC_ADMINISTRATOR:
+                msg += "|TInterface\\icons\\Mail_GMIcon:15|t|cff000000[Staff]|cff9B9B9B[Administrator] ";
+                msg += GetNameLink(player);
+                msg += " |cff1AFF25";
+                break;
+
+            // Console
+            case SEC_CONSOLE:
+                msg += "|TInterface\\icons\\Mail_GMIcon:15|t|cff000000[Staff]|cff9B9B9B[Console] ";
+                msg += "|cff1AFF25";
+                break;
         }
 
         msg += args;
