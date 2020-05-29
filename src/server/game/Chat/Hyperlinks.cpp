@@ -97,16 +97,18 @@ HyperlinkInfo Trinity::Hyperlinks::ParseHyperlink(char const* pos)
                 ++pos;
                 ++textLength;
 
-                if (*(pos++) != 'c')
+                if (*(pos++) != 'c' || *(pos++) != 'r')
                     return nullptr;
                 ++textLength;
-
-                for (uint8 i = 0; i < 8; ++i)
+                if (*(pos++) == 'c')
                 {
-                    uint8 hex = toHex(*(pos++));
-                    if (!hex)
-                        return nullptr;
-                    ++textLength;
+                    for (uint8 i = 0; i < 8; ++i)
+                    {
+                        uint8 hex = toHex(*(pos++));
+                        if (!hex)
+                            return nullptr;
+                        ++textLength;
+                    }
                 }
             }
             else
