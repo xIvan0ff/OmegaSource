@@ -143,7 +143,7 @@ public:
             if (areaEntry)
             {
                 uint8 locale = handler->GetSessionDbcLocale();
-                std::string name = areaEntry->area_name[locale];
+                std::string name = areaEntry->AreaName[locale];
                 if (name.empty())
                     continue;
 
@@ -155,7 +155,7 @@ public:
                         if (locale == handler->GetSessionDbcLocale())
                             continue;
 
-                        name = areaEntry->area_name[locale];
+                        name = areaEntry->AreaName[locale];
                         if (name.empty())
                             continue;
 
@@ -382,7 +382,7 @@ public:
                 FactionState const* factionState = target ? target->GetReputationMgr().GetState(factionEntry) : nullptr;
 
                 uint8 locale = handler->GetSessionDbcLocale();
-                std::string name = factionEntry->name[locale];
+                std::string name = factionEntry->Name[locale];
                 if (name.empty())
                     continue;
 
@@ -394,7 +394,7 @@ public:
                         if (locale == handler->GetSessionDbcLocale())
                             continue;
 
-                        name = factionEntry->name[locale];
+                        name = factionEntry->Name[locale];
                         if (name.empty())
                             continue;
 
@@ -604,7 +604,7 @@ public:
             if (set)
             {
                 uint8 locale = handler->GetSessionDbcLocale();
-                std::string name = set->name[locale];
+                std::string name = set->Name[locale];
                 if (name.empty())
                     continue;
 
@@ -616,7 +616,7 @@ public:
                         if (locale == handler->GetSessionDbcLocale())
                             continue;
 
-                        name = set->name[locale];
+                        name = set->Name[locale];
                         if (name.empty())
                             continue;
 
@@ -951,7 +951,7 @@ public:
             if (skillInfo)
             {
                 uint8 locale = handler->GetSessionDbcLocale();
-                std::string name = skillInfo->name[locale];
+                std::string name = skillInfo->DisplayName[locale];
                 if (name.empty())
                     continue;
 
@@ -963,7 +963,7 @@ public:
                         if (locale == handler->GetSessionDbcLocale())
                             continue;
 
-                        name = skillInfo->name[locale];
+                        name = skillInfo->DisplayName[locale];
                         if (name.empty())
                             continue;
 
@@ -1236,7 +1236,7 @@ public:
             if (nodeEntry)
             {
                 uint8 locale = handler->GetSessionDbcLocale();
-                std::string name = nodeEntry->name[locale];
+                std::string name = nodeEntry->Name[locale];
                 if (name.empty())
                     continue;
 
@@ -1248,7 +1248,7 @@ public:
                         if (locale == handler->GetSessionDbcLocale())
                             continue;
 
-                        name = nodeEntry->name[locale];
+                        name = nodeEntry->Name[locale];
                         if (name.empty())
                             continue;
 
@@ -1268,10 +1268,10 @@ public:
                     // send taxinode in "id - [name] (Map:m X:x Y:y Z:z)" format
                     if (handler->GetSession())
                         handler->PSendSysMessage(LANG_TAXINODE_ENTRY_LIST_CHAT, id, id, name.c_str(), localeNames[locale],
-                            nodeEntry->map_id, nodeEntry->x, nodeEntry->y, nodeEntry->z);
+                            nodeEntry->ContinentID, nodeEntry->Pos.X, nodeEntry->Pos.Y, nodeEntry->Pos.Z);
                     else
                         handler->PSendSysMessage(LANG_TAXINODE_ENTRY_LIST_CONSOLE, id, name.c_str(), localeNames[locale],
-                            nodeEntry->map_id, nodeEntry->x, nodeEntry->y, nodeEntry->z);
+                            nodeEntry->ContinentID, nodeEntry->Pos.X, nodeEntry->Pos.Y, nodeEntry->Pos.Z);
 
                     if (!found)
                         found = true;
@@ -1392,7 +1392,7 @@ public:
             {
                 /// @todo: implement female support
                 uint8 locale = handler->GetSessionDbcLocale();
-                std::string name = titleInfo->nameMale[locale];
+                std::string name = titleInfo->Name[locale];
                 if (name.empty())
                     continue;
 
@@ -1404,7 +1404,7 @@ public:
                         if (locale == handler->GetSessionDbcLocale())
                             continue;
 
-                        name = titleInfo->nameMale[locale];
+                        name = titleInfo->Name[locale];
                         if (name.empty())
                             continue;
 
@@ -1423,7 +1423,7 @@ public:
 
                     char const* knownStr = target && target->HasTitle(titleInfo) ? handler->GetTrinityString(LANG_KNOWN) : "";
 
-                    char const* activeStr = target && target->GetUInt32Value(PLAYER_CHOSEN_TITLE) == titleInfo->bit_index
+                    char const* activeStr = target && target->GetUInt32Value(PLAYER_CHOSEN_TITLE) == titleInfo->MaskID
                         ? handler->GetTrinityString(LANG_ACTIVE)
                         : "";
 
@@ -1432,9 +1432,9 @@ public:
 
                     // send title in "id (idx:idx) - [namedlink locale]" format
                     if (handler->GetSession())
-                        handler->PSendSysMessage(LANG_TITLE_LIST_CHAT, id, titleInfo->bit_index, id, titleNameStr, localeNames[locale], knownStr, activeStr);
+                        handler->PSendSysMessage(LANG_TITLE_LIST_CHAT, id, titleInfo->MaskID, id, titleNameStr, localeNames[locale], knownStr, activeStr);
                     else
-                        handler->PSendSysMessage(LANG_TITLE_LIST_CONSOLE, id, titleInfo->bit_index, titleNameStr, localeNames[locale], knownStr, activeStr);
+                        handler->PSendSysMessage(LANG_TITLE_LIST_CONSOLE, id, titleInfo->MaskID, titleNameStr, localeNames[locale], knownStr, activeStr);
 
                     ++counter;
                 }
@@ -1477,7 +1477,7 @@ public:
         {
             if (MapEntry const* mapInfo = sMapStore.LookupEntry(id))
             {
-                std::string name = mapInfo->name[locale];
+                std::string name = mapInfo->MapName[locale];
                 if (name.empty())
                     continue;
 
@@ -1495,7 +1495,7 @@ public:
                     if (mapInfo->IsContinent())
                         ss << handler->GetTrinityString(LANG_CONTINENT);
 
-                    switch (mapInfo->map_type)
+                    switch (mapInfo->InstanceType)
                     {
                         case MAP_INSTANCE:
                             ss << handler->GetTrinityString(LANG_INSTANCE);
@@ -1534,7 +1534,7 @@ public:
         if (MapEntry const* mapInfo = sMapStore.LookupEntry(id))
         {
             uint8 locale = handler->GetSession() ? handler->GetSession()->GetSessionDbcLocale() : sWorld->GetDefaultDbcLocale();
-            std::string name = mapInfo->name[locale];
+            std::string name = mapInfo->MapName[locale];
             if (name.empty())
             {
                 handler->SendSysMessage(LANG_COMMAND_NOSPELLFOUND);
@@ -1547,7 +1547,7 @@ public:
             if (mapInfo->IsContinent())
                 ss << handler->GetTrinityString(LANG_CONTINENT);
 
-            switch (mapInfo->map_type)
+            switch (mapInfo->InstanceType)
             {
             case MAP_INSTANCE:
                 ss << handler->GetTrinityString(LANG_INSTANCE);

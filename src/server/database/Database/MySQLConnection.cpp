@@ -321,8 +321,8 @@ ResultSet* MySQLConnection::Query(char const* sql)
     if (!sql)
         return nullptr;
 
-    MySQLResult* result = NULL;
-    MySQLField* fields = NULL;
+    MySQLResult* result = nullptr;
+    MySQLField* fields = nullptr;
     uint64 rowCount = 0;
     uint32 fieldCount = 0;
 
@@ -545,8 +545,8 @@ bool MySQLConnection::_HandleMySQLErrno(uint32 errNo, uint8 attempts /*= 5*/)
                 mysql_close(m_Mysql);
                 m_Mysql = nullptr;
             }
+            [[fallthrough]];
         }
-        /* fallthrough */
         case CR_CONN_HOST_ERROR:
         {
             TC_LOG_INFO("sql.sql", "Attempting to reconnect to the MySQL server...");
