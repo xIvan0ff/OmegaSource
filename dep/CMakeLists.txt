@@ -36,7 +36,6 @@ if(TOOLS)
   add_subdirectory(libmpq)
 endif()
 
-<<<<<<< HEAD
 if (ELUNA)
   add_subdirectory(lualib)
 endif()
