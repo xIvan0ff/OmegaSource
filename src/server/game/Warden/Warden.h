@@ -80,7 +80,7 @@ struct ClientWardenModule
     size_t CompressedSize;
 };
 
-// class WorldSession;
+class WorldSession;
 
 class TC_GAME_API Warden
 {
