@@ -39,13 +39,9 @@
 #include "ScriptMgr.h"
 #include "SpellAuraEffects.h"
 #include "Util.h"
-<<<<<<< HEAD
 #ifdef ELUNA
 #include "LuaEngine.h"
 #endif
-=======
-#include "Warden.h"
->>>>>>> cbed1039c47f0e3487cea555bb8552a4e6445f5a
 #include "World.h"
 #include "WorldPacket.h"
 #include <algorithm>

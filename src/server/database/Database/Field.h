@@ -119,7 +119,6 @@ class TC_DATABASE_API Field
             return data.value == nullptr;
         }
 
-<<<<<<< HEAD
         DatabaseFieldTypes GetType() const
         {
             return data.type;
@@ -135,8 +134,6 @@ class TC_DATABASE_API Field
             uint32 Index;
         };
 
-=======
->>>>>>> cbed1039c47f0e3487cea555bb8552a4e6445f5a
     protected:
         struct
         {
