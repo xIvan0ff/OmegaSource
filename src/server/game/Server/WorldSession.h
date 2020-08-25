@@ -1170,7 +1170,7 @@ class TC_GAME_API WorldSession
         uint8 m_expansion;
 
         // Warden
-        std::unique_ptr<Warden> _warden;                                    // Remains NULL if Warden system is not enabled by config
+        Warden* _warden;                                    // Remains NULL if Warden system is not enabled by config
 
         time_t _logoutTime;
         bool m_inQueue;                                     // session wait in auth.queue
