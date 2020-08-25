@@ -119,21 +119,6 @@ class TC_DATABASE_API Field
             return data.value == nullptr;
         }
 
-        DatabaseFieldTypes GetType() const
-        {
-            return data.type;
-        }
-
-        struct Metadata
-        {
-            char const* TableName;
-            char const* TableAlias;
-            char const* Name;
-            char const* Alias;
-            char const* Type;
-            uint32 Index;
-        };
-
     protected:
         struct
         {
